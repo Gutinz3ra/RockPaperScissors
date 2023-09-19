@@ -5,7 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
+import java.util.Objects;
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
@@ -55,6 +57,24 @@ public class MainActivity extends AppCompatActivity {
 
     public void verificarGanhador (String escolhaUsuario) {
         String escolhaApp = gerarEscolhaAleatoriaApp();
+        TextView textoresultado = findViewById(R.id.text_resultado);
+
+        if(
+            (escolhaApp == "Papel" && escolhaUsuario == "Pedra") ||
+            (escolhaApp == "Tesoura" && escolhaUsuario == "Papel")
+        ){
+            textoresultado.setText("Você perdeu :( ");
+
+        }else if(
+                (escolhaUsuario == "Pedra" && escolhaApp == "Tesoura") ||
+                (escolhaUsuario == "Papel" && escolhaApp == "Pedra") ||
+                (escolhaUsuario == "Tesoura" && escolhaApp == "Papel")
+        ){
+            textoresultado.setText("Você Ganhou :) ");
+        }else{
+            textoresultado.setText("Empatamos ;)");
+        }
+
     }
 
 }
